@@ -36,7 +36,7 @@ struct SomeNewObject: DictionaryRepresentable {
 		guard let param0 = dic[CodingKeys.timestamp.rawValue] as? TimeInterval else { return nil }
 		self.timestamp = Date(timeIntervalSince1970: param0)
 
-		guard let param1 = dic[CodingKeys.some_property.rawValue] as? <type 'type'> else { return nil }
+		guard let param1 = dic[CodingKeys.some_property.rawValue] as? String else { return nil }
 		self.some_property = param1
 	}
 
