@@ -30,3 +30,5 @@ def main():
     del args[0]
     if validate(sys.argv):
         print(xcmodelcreate.runwithargs(sys.argv))
+    else:
+        sys.exit(-1)
