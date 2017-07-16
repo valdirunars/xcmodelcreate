@@ -49,7 +49,7 @@ struct SomeNewObject: DictionaryRepresentable {
 }
 ```
 
-Using the protocol:
+Conforming to the protocol:
 
 ```swift
 protocol DictionaryRepresentable {
