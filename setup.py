@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='xcmodelcreate',
-      version='0.3.9',
+      version='0.1',
       description='Generates models in an xcode project based on a JSON string',
       url='http://github.com/valdirunars/xcmodelcreate',
       author='DeveloThor',
