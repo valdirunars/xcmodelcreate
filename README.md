@@ -1,7 +1,7 @@
 # xcmodelcreate
 
 ## How to install
-```console
+```bash
 git clone https://github.com/valdirunars/xcmodelcreate
 cd xcmodelcreate
 pip install .
