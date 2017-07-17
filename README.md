@@ -53,7 +53,7 @@ Conforming to the protocol:
 
 ```swift
 protocol DictionaryRepresentable {
-  init(dic: [String: Any])
+  init?(dic: [String: Any])
   func asDictionary() -> [String: Any]
 }
 ```
