@@ -62,12 +62,10 @@ protocol DictionaryRepresentable {
 ## Fun fact: You can do dropdown menus in markdown (at least on GitHub)
 
 <details>
-<summary>Outer Arrow</summary>
+<summary>How do I drop?</summary>
 <details>
-<summary>Inner Arrow</summary>
-Drop it like it's hot
-</details>
-</details>
+<summary>I'll tell you how</summary>
+... like it's hot
 
 ```markdown
 <details>
@@ -75,5 +73,8 @@ Drop it like it's hot
 <details>
 <summary>Inner Arrow</summary>
 Drop it like it's hot
+</details>
+</details>
+```
 </details>
 </details>
