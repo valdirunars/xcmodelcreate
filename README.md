@@ -59,7 +59,7 @@ protocol DictionaryRepresentable {
 }
 ```
 
-## Fun fact: You can do dropdown menus in markdown (at least on GitHub)
+## Fun fact: You can create dropdown menus in markdown (at least on GitHub)
 
 <details>
 <summary>How do I drop?</summary>
