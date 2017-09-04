@@ -3,6 +3,7 @@
 ## How to install
 ```bash
 git clone https://github.com/valdirunars/xcmodelcreate
+pip install pbxproj
 pip install ./xcmodelcreate
 sudo rm -r xcmodelcreate
 ```
@@ -57,3 +58,23 @@ protocol DictionaryRepresentable {
   func asDictionary() -> [String: Any]
 }
 ```
+
+## Fun fact: You can create dropdown menus in markdown (at least on GitHub)
+
+<details>
+<summary>How do I drop?</summary>
+<details>
+<summary>I'll tell you how</summary>
+... like it's hot
+
+```markdown
+<details>
+<summary>Outer Arrow</summary>
+<details>
+<summary>Inner Arrow</summary>
+Drop it like it's hot
+</details>
+</details>
+```
+</details>
+</details>
