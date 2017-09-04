@@ -10,5 +10,5 @@ setup(name='xcmodelcreate',
       packages=['xcmodelcreate'],
       zip_safe=False,
       entry_points = {
-        'console_scripts': ['xcmodelcreate=xcmodelcreate.command_line:main'],
+        'console_scripts': ['xcmodelcreate=xcmodelcreate.app:main'],
     })
