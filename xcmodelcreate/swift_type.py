@@ -30,12 +30,11 @@ class SwiftType(object):
 
     swift_type = "<#Some Type#>"
     is_optional = False
-
-    def is_custom_type:
-        return self.swift_type in supported_types()
+    is_custom_type = True
 
     def __init__(self, string):
         last_index = len(string) - 1
 
+        self.is_custom_type = string in supported_types()
         self.swift_type = string
         self.is_optional = string[last_index] == "?"

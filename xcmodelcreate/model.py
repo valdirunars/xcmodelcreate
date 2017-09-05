@@ -22,10 +22,11 @@ class Model(object):
             value = jsonDic[key]
             self.properties.append(SwiftProperty(key, value))
 
-        prop_string = "\n\t".join(map(extract_declaration, self.properties))
+        tmp_prop_string = "\n\t".join(map(extract_declaration, self.properties))
+        prop_string = "\t%s" % (tmp_prop_string)
         coding_keys_cases = "\n\t\t".join(map(extract_coding_key_case, self.properties))
-        coding_keys = "\tCodingKeys {\n\t\t%s\n\t}" % (coding_keys_cases)
+        coding_keys = "\tenum CodingKeys {\n\t\t%s\n\t}" % (coding_keys_cases)
         i_f = "import Foundation"
 
-        self.swift_implementation = "%s\n\n%s {\n%s\n\n%s\n}" % (i_f, name, prop_string, coding_keys)
+        self.swift_implementation = "%s\n\nstruct %s {\n%s\n\n%s\n}" % (i_f, name, prop_string, coding_keys)
         self.name = name

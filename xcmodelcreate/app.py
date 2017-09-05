@@ -82,6 +82,6 @@ def main():
     args = sys.argv
     del args[0]
     if validate(sys.argv):
-        print runwithargs(sys.argv)
+        runwithargs(sys.argv)
     else:
         sys.exit(-1)
