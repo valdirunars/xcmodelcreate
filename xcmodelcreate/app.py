@@ -19,7 +19,7 @@ def main():
         project_name = None
         for element in element_list:
             if element.endswith(DOT_XCODEPROJ):
-
+                project_name = element.split(DOT_XCODEPROJ)[0]
                 break
         if project_name == None:
             print "--- Error: Couldn't find an xcodeproj at the root level of the current directory---"
