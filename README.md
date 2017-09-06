@@ -11,51 +11,39 @@ sudo rm -r xcmodelcreate
 ## Usage
 
 ```bash
-xcmodelcreate "{ \"SomeNewObject\": { \"some_property\": \"String\", \"timestamp\": \"Date\" } }" "path/to/xcprojectname" "path/to/models_folder"
+xcmodelcreate "{ \"SomeNewObject\": { \"some_property\": \"String\", \"timestamp\": \"Date\" } }" Kraken "Sources/Models" "Sources/Models"
 ```
 
-This generates a model:
+- Here the first input is the JSON for the object:
+
+	```JSON
+	{
+		"SomeNewObject": {
+			"some_property": "String",
+			"timestamp": "Date"
+		}
+	}
+	```
+
+- The second input represents the project name with path included e.g. path/to/the/project_name
+
+- The third input represents the path to the folder where the files should be added
+
+- Finally the fourth input represents the group path within the object
+
+This generates the model:
 
 ```swift
 import Foundation
 
 struct SomeNewObject: DictionaryRepresentable {
-	public let timestamp: Date
-	public let some_property: String
+	let timestamp: Date
+	let some_property: String
 
 	enum CodingKeys: String {
 		case timestamp
 		case some_property
 	}
-
-	public init(timestamp: Date, some_property: String) {
-		self.timestamp = timestamp
-		self.some_property = some_property
-	}
-
-	public init?(dic: [String: Any]) {
-		guard let param0 = dic[CodingKeys.timestamp.rawValue] as? TimeInterval else { return nil }
-		self.timestamp = Date(timeIntervalSince1970: param0)
-
-		guard let param1 = dic[CodingKeys.some_property.rawValue] as? String else { return nil }
-		self.some_property = param1
-	}
-
-	public func asDictionary() -> [String: Any] {
-		return [
-			CodingKeys.timestamp.rawValue: self.timestamp.timeIntervalSince1970,
-			CodingKeys.some_property.rawValue: self.some_property
-		]
-	}
-}
-```
-
-Conforming to the protocol:
-
-```swift
-protocol DictionaryRepresentable {
-  init?(dic: [String: Any])
-  func asDictionary() -> [String: Any]
 }
 ```
 
