@@ -9,7 +9,6 @@ def validate(args):
 
     arg_names = [
         "models_json",
-        "project_name",
         "model_folder",
         "model_group"
     ]

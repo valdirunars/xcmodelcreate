@@ -47,14 +47,13 @@ class ModelCreator(object):
         model_file.write(swift_str)
         model_file.close()
 
-def create_models(valid_args):
+def create_models(valid_args, project_name):
     """Start writing models into xcode project"""
 
     # Init Variables
     models_json = json.loads(valid_args[0])
-    project_name = valid_args[1]
-    model_folder = valid_args[2]
-    model_group = valid_args[3]
+    model_folder = valid_args[1]
+    model_group = valid_args[2]
 
     creator = ModelCreator(project_name)
 
