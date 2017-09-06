@@ -4,6 +4,7 @@ import sys
 import os
 from xcmodelcreate import model_creator
 from xcmodelcreate import validator
+from xcmodelcreate import constants
 
 def main():
     """The main function of the applications"""
@@ -13,7 +14,9 @@ def main():
 
     args = sys.argv
 
+    # first argument is always app.py because python is the actual command
     del args[0]
+
     if validator.validate(sys.argv):
         element_list = os.listdir(".")
         project_name = None
