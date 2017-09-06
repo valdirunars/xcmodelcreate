@@ -24,8 +24,18 @@ class ModelCreator(object):
         print "Backup file = %s" % (self.backup)
         file_path = '%s/%s.swift' % (model_folder, model_name)
 
-        group_obj = self.project.get_or_create_group(model_group)
-        self.project.add_file(file_path, parent=group_obj, force=False)
+        group_arr = model_group.split("/")
+
+
+        pbx_obj = None
+        for group_path in group_arr:
+            if pbx_obj == None:
+                pbx_obj = self.project.get_or_create_group(group_path)
+            else:
+                previous = pbx_obj
+                pbx_obj = self.project.get_or_create_group(group_path, parent=previous)
+
+        self.project.add_file(file_path, parent=pbx_obj, force=False)
         self.project.save()
 
         swift_str = Model(model_name, model_json).swift_implementation
