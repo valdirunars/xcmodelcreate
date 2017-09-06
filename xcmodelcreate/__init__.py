@@ -7,3 +7,4 @@
 from swift_type import SwiftType
 from swift_property import SwiftProperty
 from model import Model
+import model_creator
