@@ -1,17 +1,24 @@
 """validator.py"""
+import constants
 
-def validate(args):
+def validate_method(method):
+    return method.lower() in VALID_METHODS
+
+def validate(args, method):
     """
     Validates the given inputs. Takes one string array \"args\"
         arguments:
         - args: An array of inputs
     """
 
-    arg_names = [
-        "models_json",
-        "model_folder",
-        "model_group"
-    ]
+    if method == "init" || method == "all":
+        arg_names = []
+    elif method == "raw":
+        arg_names = [
+            "models_json",
+            "model_folder",
+            "model_group"
+        ]
 
     valid = True
     print args

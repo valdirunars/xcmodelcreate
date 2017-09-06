@@ -1,7 +1,9 @@
 """model_creator.py"""
 import os
 import json
+import constants
 from xcmodelcreate import Model
+from xcmodelcreate import Config
 from pbxproj import XcodeProject as xc
 
 class ModelCreator(object):
@@ -11,7 +13,7 @@ class ModelCreator(object):
     backup = None
 
     def __init__(self, project_name):
-        proj = xc.load('%s.xcodeproj/project.pbxproj' % (project_name))
+        proj = xc.load('%s%s/project.pbxproj' % (project_name, DOT_XCODEPROJ))
         self.backup = proj.backup()
         self.project = proj
 
@@ -25,7 +27,6 @@ class ModelCreator(object):
         file_path = '%s/%s.swift' % (model_folder, model_name)
 
         group_arr = model_group.split("/")
-
 
         pbx_obj = None
         for group_path in group_arr:
@@ -47,13 +48,30 @@ class ModelCreator(object):
         model_file.write(swift_str)
         model_file.close()
 
-def create_models(valid_args, project_name):
+def create_models(valid_args, project_name, method):
     """Start writing models into xcode project"""
 
+    models_json = None
+    model_folder = None
+    model_group = None
+
     # Init Variables
-    models_json = json.loads(valid_args[0])
-    model_folder = valid_args[1]
-    model_group = valid_args[2]
+    if method == METHOD_ALL:
+        config = Config()
+
+        model_json_path = config.json_path
+
+        with open(model_json_path, 'r') as json_file:
+            model_json = json_file.read()
+
+        model_folder = config.model_folder
+        model_group = config.model_group
+    elif method == METHOD_RAW:
+        models_json = json.loads(valid_args[0])
+        model_folder = valid_args[1]
+        model_group = valid_args[2]
+    else:
+        print "--- Error: unhandled method: %s ---" % (method)
 
     creator = ModelCreator(project_name)
 
