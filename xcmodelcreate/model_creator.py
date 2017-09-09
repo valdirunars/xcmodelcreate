@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """model_creator.py"""
 import os
 import json
@@ -13,7 +14,7 @@ class ModelCreator(object):
     backup = None
 
     def __init__(self, project_name):
-        proj = xc.load('%s%s/project.pbxproj' % (project_name, DOT_XCODEPROJ))
+        proj = xc.load('%s%s/project.pbxproj' % (project_name, constants.DOT_XCODEPROJ))
         self.backup = proj.backup()
         self.project = proj
 
@@ -56,17 +57,17 @@ def create_models(valid_args, project_name, method):
     model_group = None
 
     # Init Variables
-    if method == METHOD_ALL:
+    if method == constants.METHOD_ALL:
         config = Config()
 
         model_json_path = config.json_path
 
         with open(model_json_path, 'r') as json_file:
-            model_json = json_file.read()
+            models_json = json.load(json_file)
 
         model_folder = config.model_folder
         model_group = config.model_group
-    elif method == METHOD_RAW:
+    elif method == constants.METHOD_RAW:
         models_json = json.loads(valid_args[0])
         model_folder = valid_args[1]
         model_group = valid_args[2]
@@ -75,7 +76,7 @@ def create_models(valid_args, project_name, method):
 
     creator = ModelCreator(project_name)
 
-    for key in models_json.keys():
+    for key in models_json:
         model_json = models_json[key]
         creator.createmodel(key, model_json, model_folder, model_group)
 

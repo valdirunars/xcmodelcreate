@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # @Time: 2017/9/1 09:33
 # @Author: Thorvaldur Runarsson
 # @Site: http://www.develothor.codes

@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 """validator.py"""
 import constants
 
 def validate_method(method):
-    return method.lower() in VALID_METHODS
+    return method.lower() in constants.VALID_METHODS
 
 def validate(args, method):
     """
@@ -11,7 +12,7 @@ def validate(args, method):
         - args: An array of inputs
     """
 
-    if method == "init" || method == "all":
+    if method in [constants.METHOD_INIT, constants.METHOD_ALL]:
         arg_names = []
     elif method == "raw":
         arg_names = [

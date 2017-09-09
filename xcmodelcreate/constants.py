@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 DOT_XCODEPROJ = ".xcodeproj"
+FOLDER_PATH = "./.xcmodelcreate"
 
 METHOD_ALL = "all"
 METHOD_INIT = "init"
