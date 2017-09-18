@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """model.py"""
 
 from xcmodelcreate import SwiftProperty
@@ -25,8 +26,8 @@ class Model(object):
         tmp_prop_string = "\n\t".join(map(extract_declaration, self.properties))
         prop_string = "\t%s" % (tmp_prop_string)
         coding_keys_cases = "\n\t\t".join(map(extract_coding_key_case, self.properties))
-        coding_keys = "\tenum CodingKeys {\n\t\t%s\n\t}" % (coding_keys_cases)
+        coding_keys = "\tprivate enum CodingKeys: String, CodingKey {\n\t\t%s\n\t}" % (coding_keys_cases)
         i_f = "import Foundation"
 
-        self.swift_implementation = "%s\n\nstruct %s {\n%s\n\n%s\n}" % (i_f, name, prop_string, coding_keys)
+        self.swift_implementation = "%s\n\nstruct %s: Codable, Decodable {\n%s\n\n%s\n}" % (i_f, name, prop_string, coding_keys)
         self.name = name

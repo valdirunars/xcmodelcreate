@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """swift_property.py"""
 
 from xcmodelcreate import SwiftType

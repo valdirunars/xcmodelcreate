@@ -45,11 +45,11 @@ This generates the model:
 ```swift
 import Foundation
 
-struct SomeNewObject: DictionaryRepresentable {
+struct SomeNewObject: Codable, Decodable {
 	let timestamp: Date
 	let some_property: String
 
-	enum CodingKeys: String {
+	private enum CodingKeys: String, CodingKey {
 		case timestamp
 		case some_property
 	}
