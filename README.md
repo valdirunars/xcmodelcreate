@@ -10,8 +10,19 @@ sudo rm -r xcmodelcreate
 
 ## Usage
 
+### Commands
+
+- `xcmodelcreate raw`
+
+- `xcmodelcreate init`
+
+- `xcmodelcreate all`
+
+
+#### `xcmodelcreate raw`
+
 ```bash
-xcmodelcreate "{ \"SomeNewObject\": { \"some_property\": \"String\", \"timestamp\": \"Date\" } }" Kraken "Sources/Models" "Sources/Models"
+xcmodelcreate raw "{ \"SomeNewObject\": { \"some_property\": \"String\", \"timestamp\": \"Date\" } }" "Sources/Models" "Sources/Models"
 ```
 
 - Here the first input is the JSON for the object:
@@ -25,9 +36,7 @@ xcmodelcreate "{ \"SomeNewObject\": { \"some_property\": \"String\", \"timestamp
 	}
 	```
 
-- The second input represents the project name with path included e.g. path/to/the/project_name
-
-- The third input represents the path to the folder where the files should be added
+- The second input represents the path to the folder where the files should be added
 
 - Finally the fourth input represents the group path within the object
 
@@ -47,22 +56,15 @@ struct SomeNewObject: DictionaryRepresentable {
 }
 ```
 
-## Fun fact: You can create dropdown menus in markdown (at least on GitHub)
+##### Options
 
-<details>
-<summary>How do I drop?</summary>
-<details>
-<summary>I'll tell you how</summary>
-... like it's hot
+- `-a` Add to current models
 
-```markdown
-<details>
-<summary>Outer Arrow</summary>
-<details>
-<summary>Inner Arrow</summary>
-Drop it like it's hot
-</details>
-</details>
+	- NOTE: Current project must be initialized see: `xcmodelcreate init`
+
+#### Initialization
+```bash
+xcmodelcreate init
 ```
-</details>
-</details>
+
+This method sets up everything needed for maintaining the model structure
