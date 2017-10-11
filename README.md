@@ -12,59 +12,25 @@ sudo rm -r xcmodelcreate
 
 ### Commands
 
-- `xcmodelcreate raw`
-
 - `xcmodelcreate init`
 
 - `xcmodelcreate all`
 
-
-#### `xcmodelcreate raw`
-
-```bash
-xcmodelcreate raw "{ \"SomeNewObject\": { \"some_property\": \"String\", \"timestamp\": \"Date\" } }" "Sources/Models" "Sources/Models"
-```
-
-- Here the first input is the JSON for the object:
-
-	```JSON
-	{
-		"SomeNewObject": {
-			"some_property": "String",
-			"timestamp": "Date"
-		}
-	}
-	```
-
-- The second input represents the path to the folder where the files should be added
-
-- Finally the fourth input represents the group path within the object
-
-This generates the model:
-
-```swift
-import Foundation
-
-struct SomeNewObject: Codable, Decodable {
-	let timestamp: Date
-	let some_property: String
-
-	private enum CodingKeys: String, CodingKey {
-		case timestamp
-		case some_property
-	}
-}
-```
-
-##### Options
-
-- `-a` Add to current models
-
-	- NOTE: Current project must be initialized see: `xcmodelcreate init`
-
 #### Initialization
+
 ```bash
 xcmodelcreate init
 ```
 
 This method sets up everything needed for maintaining the model structure
+
+After running this command, check out the generated private folder `.xcmodelcreate`
+
+#### `xcmodelcreate all`
+To run this command xcmodelcreate must have been initialized using `xcmodelcreate init`
+
+```bash
+xcmodelcreate all
+```
+
+The command generates all models specified in the `./.xcmodelcreate/models.json` and based on the configuration specified `./.xcmodelcreate/config.json`

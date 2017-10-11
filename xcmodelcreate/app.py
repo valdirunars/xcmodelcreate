@@ -3,11 +3,14 @@
 
 import sys
 import os
+
 from xcmodelcreate import model_creator
 from xcmodelcreate import validator
 from xcmodelcreate import constants
 
 def initialize():
+    """The initialization method for `xcmodelcreate init`"""
+
     if not os.path.exists(constants.FOLDER_PATH):
         os.makedirs(constants.FOLDER_PATH)
     else:
@@ -15,10 +18,26 @@ def initialize():
         exit(1)
 
     config = open("%s/config.json" % (constants.FOLDER_PATH), 'a')
+
+    project_arr = os.system('ls *.xcodeproj')
+    if len(project_arr) <= 0:
+        print "No *.xcodeproj found"
+        sys.exit(-1)
+    xcproject_path = project_arr[0]
+
     json_path = "%s/models.json" % (constants.FOLDER_PATH)
     models_path = "Sources/Models"
     group_path = "Sources/Models"
-    config.write("{\n\t\"json_path\": \"%s\",\n\t\"model_group\": \"%s\",\n\t\"model_folder\": \"%s\"\n}" % (json_path, group_path, models_path))
+
+    json = """
+{
+    \"json_path\": \"%s\",
+    \"xcodeproj\":\"%s\",
+    \"model_group\": \"%s\",
+    \"model_folder\": \"%s\"
+}
+    """ % (json_path, xcproject_path, group_path, models_path)
+    config.write(json)
 
     models = open("%s/models.json" % (constants.FOLDER_PATH), 'a')
     models.write("{}")
@@ -27,17 +46,9 @@ def initialize():
 def main():
     """The main function of the applications"""
 
-    print "--- www.DeveloThor.codes ---"
-    print "--- validating inputs ... ---"
-
-    # check for a xcode project
-    element_list = os.listdir(".")
-    project_name = None
-    for element in element_list:
-        if element.endswith(constants.DOT_XCODEPROJ):
-            project_name = element.split(constants.DOT_XCODEPROJ)[0]
-            break
-
+    print "---  © Thorvaldur Runarsson  ---"
+    print "--- \"github.com/valdirunars\""
+    print "     validating inputs ... ---"
 
     # extract arguments
     args = sys.argv
@@ -50,17 +61,10 @@ def main():
 
     validator.validate_method(method)
 
-    if project_name == None:
-        print "--- Error: Couldn't find an xcodeproj at the root level of the current directory ---"
-        sys.exit(-1)
+    validator.validate(args, method)
 
-    # remove method from array so arguments are all that is left
-    del args[0]
-
-    validator.validate(args, method):
-
-    if method in [constants.METHOD_ALL, constants.METHOD_RAW]:
-        model_creator.create_models(args, project_name, method)
+    if method == constants.METHOD_ALL:
+        model_creator.create_models()
     elif method == constants.METHOD_INIT:
         initialize()
     else:

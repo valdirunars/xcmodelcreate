@@ -4,12 +4,10 @@ FOLDER_PATH = "./.xcmodelcreate"
 
 METHOD_ALL = "all"
 METHOD_INIT = "init"
-METHOD_RAW = "raw"
 
 VALID_METHODS = [
     METHOD_INIT,
-    METHOD_ALL,
-    METHOD_RAW
+    METHOD_ALL
 ]
 
 SUPPORTED_TYPES = [
