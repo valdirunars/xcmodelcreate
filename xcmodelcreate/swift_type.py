@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """swift_type.py"""
-import constants
+from xcmodelcreate import constants
 
 class SwiftType(object):
     """Contains info for a supported Swift type."""
