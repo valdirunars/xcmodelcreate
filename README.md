@@ -28,7 +28,7 @@ This method sets up everything needed for maintaining the model structure
 
 After running this command, check out the generated private folder `.xcmodelcreate`
 
-#### `xcmodelcreate all`
+#### Model creation
 To run this command xcmodelcreate must have been initialized using `xcmodelcreate init`
 
 ```bash
