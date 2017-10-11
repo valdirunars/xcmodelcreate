@@ -1,10 +1,10 @@
 language: python
 python:
-	- 2.7
-	- nightly
+  - 2.7
+  - nightly
 install:
-	- pip install pbxproj
-	- pip install pylint
+  - pip install pbxproj
+  - pip install pylint
 script:
-	- find . -iname "*.py" | xargs pylint
-	- py.test
+  - find . -iname "*.py" | xargs pylint
+  - py.test
