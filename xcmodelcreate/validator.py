@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 """validator.py"""
 import constants
+import sys
 
 def validate_method(method):
-    return method.lower() in constants.VALID_METHODS
+    if (method.lower() in constants.VALID_METHODS) == False:
+        print "--- Error: Invalid method: \"%s\" ---" % (method)
+        sys.exit(-1)
 
 def validate(args, method):
     """
@@ -37,4 +40,5 @@ def validate(args, method):
         print "Too many arguments! Arguments are:"
         for idx, element in enumerate(arg_names):
             print "args[%d] = %s" % (idx, element)
-    return valid
+    if valid == None:
+        sys.exit(-1)

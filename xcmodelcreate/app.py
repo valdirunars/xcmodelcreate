@@ -48,22 +48,21 @@ def main():
     # first element is the "method" being called
     method = args[0]
 
-    if validator.validate_method(method) == False:
-        print "--- Error: Invalid method: \"%s\" ---" % (method)
-        sys.exit(-1)
+    validator.validate_method(method)
+
     if project_name == None:
         print "--- Error: Couldn't find an xcodeproj at the root level of the current directory ---"
         sys.exit(-1)
 
-    # remove method from array also so arguments ar
+    # remove method from array so arguments are all that is left
     del args[0]
 
-    if validator.validate(args, method):
-        if method in [constants.METHOD_ALL, constants.METHOD_RAW]:
-            model_creator.create_models(args, project_name, method)
-        elif method == constants.METHOD_INIT:
-            initialize()
-        else:
-            print "--- Error: Invalid method: \"%s\" ---" % (method)
+    validator.validate(args, method):
+
+    if method in [constants.METHOD_ALL, constants.METHOD_RAW]:
+        model_creator.create_models(args, project_name, method)
+    elif method == constants.METHOD_INIT:
+        initialize()
     else:
+        print "--- Error: Invalid method: \"%s\" ---" % (method)
         sys.exit(-1)

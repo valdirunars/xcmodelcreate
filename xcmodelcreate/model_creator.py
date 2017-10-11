@@ -3,6 +3,7 @@
 import os
 import json
 import constants
+import sys
 from xcmodelcreate import Model
 from xcmodelcreate import Config
 from pbxproj import XcodeProject as xc
@@ -73,6 +74,7 @@ def create_models(valid_args, project_name, method):
         model_group = valid_args[2]
     else:
         print "--- Error: unhandled method: %s ---" % (method)
+        sys.exit(-1)
 
     creator = ModelCreator(project_name)
 
