@@ -1,18 +1,29 @@
+# -*- coding: utf-8 -*-
 """validator.py"""
+import sys
+from xcmodelcreate import constants
 
-def validate(args):
+def validate_method(method):
+    """ Method for validating argument inputs """
+    if (method.lower() in constants.VALID_METHODS) is False:
+        print "--- Error: Invalid method: \"%s\" ---" % (method)
+        sys.exit(-1)
+
+def validate(args, method):
     """
     Validates the given inputs. Takes one string array \"args\"
         arguments:
         - args: An array of inputs
     """
 
-    arg_names = [
-        "models_json",
-        "project_name",
-        "model_folder",
-        "model_group"
-    ]
+    if method in [constants.METHOD_INIT, constants.METHOD_ALL]:
+        arg_names = []
+    elif method == "raw":
+        arg_names = [
+            "models_json",
+            "model_folder",
+            "model_group"
+        ]
 
     valid = True
     print args
@@ -30,4 +41,5 @@ def validate(args):
         print "Too many arguments! Arguments are:"
         for idx, element in enumerate(arg_names):
             print "args[%d] = %s" % (idx, element)
-    return valid
+    if valid is None:
+        sys.exit(-1)
