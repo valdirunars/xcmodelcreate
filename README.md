@@ -1,3 +1,5 @@
+<img src="https://travis-ci.org/valdirunars/xcmodelcreate.svg?branch=master"/>
+
 # xcmodelcreate
 
 ## How to install
