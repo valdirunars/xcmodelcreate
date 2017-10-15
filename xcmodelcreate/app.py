@@ -59,12 +59,8 @@ def main():
     # first element is the "method" being called
     method = args[0]
 
-    del args[0]
-
     print("method = " + method)
     validator.validate_method(method)
-
-    validator.validate(args, method)
 
     if method == constants.METHOD_ALL:
         model_creator.create_models()
